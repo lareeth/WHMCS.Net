@@ -17,4 +17,6 @@ getProducts()
 getProducts(int groupId)
 ```
 
+Nuget package also avilable https://www.nuget.org/packages/WHMCS.net
+
 Please read http://wiki.whmcs.com/API to find out more about the data that is returned and what format it is in.
