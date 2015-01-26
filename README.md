@@ -16,3 +16,5 @@ getProduct(int productId)
 getProducts()
 getProducts(int groupId)
 ```
+
+Please read http://wiki.whmcs.com/API to find out more about the data that is returned and what format it is in.
