@@ -7,8 +7,8 @@
     <ProjectGuid>{846231F2-7D3F-4189-882C-165E96B2DA4C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WHMCS.net</RootNamespace>
-    <AssemblyName>WHMCS.net</AssemblyName>
+    <RootNamespace>WHMCS.Net</RootNamespace>
+    <AssemblyName>WHMCS.Net</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
