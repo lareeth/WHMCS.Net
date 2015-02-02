@@ -1,35 +1,29 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
+using WHMCS.net.Interfaces;
 using WHMCS.net.Models;
 
 namespace WHMCS.net
 {
     public class WhmcsApi
     {
-
-        private readonly string _username;
-        private readonly string _password;
         private readonly string _url;
         private readonly NameValueCollection _formData;
         private readonly IDatastore _datastore;
 
         public WhmcsApi(string username, string password, string url, IDatastore datastore)
         {
-            _username = username;
-            _password = CalculateMD5Hash(password);
+            var password1 = CalculateMD5Hash(password);
             _url = url;
 
             _formData = new NameValueCollection()
             {
-                {"username", _username},
-                {"password", _password},
+                {"username", username},
+                {"password", password1},
                 {"responsetype", "json"}
             };
 
@@ -58,7 +52,7 @@ namespace WHMCS.net
             return sb.ToString();
         }
 
-        public ProductsResponse getProduct(int productId)
+        public ProductsResponse GetProduct(int productId)
         {
             NameValueCollection requestData = new NameValueCollection
             {
@@ -69,7 +63,7 @@ namespace WHMCS.net
             return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, requestData));
         }
 
-        public ProductsResponse getProducts()
+        public ProductsResponse GetProducts()
         {
             NameValueCollection requestData = new NameValueCollection
             {
@@ -79,7 +73,7 @@ namespace WHMCS.net
             return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, requestData));
         }
 
-        public ProductsResponse getProducts(int groupId)
+        public ProductsResponse GetProducts(int groupId)
         {
             NameValueCollection requestData = new NameValueCollection
             {

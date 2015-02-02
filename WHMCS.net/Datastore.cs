@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using WHMCS.net;
+using WHMCS.net.Interfaces;
 
 namespace WHMCS.net
 {

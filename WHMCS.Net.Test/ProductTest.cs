@@ -3,14 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Specialized;
 using WHMCS.net.Models;
 using WHMCS.net;
-using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-using System.Diagnostics;
-using System.Text;
 using System.Linq;
+using WHMCS.net.Interfaces;
 
 namespace WHMCS.Net.Test
 {
@@ -21,7 +15,7 @@ namespace WHMCS.Net.Test
         public void TestSingleProductName()
         {
             WhmcsApi instance = new WhmcsApi("User", "Pass", "Website", this);
-            var singleProduct = instance.getProduct(1);
+            var singleProduct = instance.GetProduct(1);
             Assert.AreEqual(singleProduct.Content.Product.SingleOrDefault().Name, "Basic cPanel Shared Hosting");
         }
 
@@ -29,7 +23,7 @@ namespace WHMCS.Net.Test
         public void TestGetSingleProduct()
         {
             WhmcsApi instance = new WhmcsApi("User", "Pass", "Website", this);
-            var singleProduct = instance.getProduct(1);
+            var singleProduct = instance.GetProduct(1);
             Assert.IsNotNull(singleProduct);
         }
 
@@ -37,7 +31,7 @@ namespace WHMCS.Net.Test
         public void TestGetGroupProducts()
         {
             WhmcsApi instance = new WhmcsApi("User", "Pass", "Website", this);
-            var test = instance.getProducts(1);
+            var test = instance.GetProducts(1);
             Assert.IsNotNull(test);
         }
 
@@ -45,7 +39,7 @@ namespace WHMCS.Net.Test
         public void TestGetAllProducts()
         {
             WhmcsApi instance = new WhmcsApi("User", "Pass", "Website", this);
-            var test = instance.getProducts();
+            var test = instance.GetProducts();
             Assert.IsNotNull(test);
         }
 

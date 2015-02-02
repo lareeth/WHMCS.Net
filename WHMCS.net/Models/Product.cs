@@ -1,36 +1,17 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace WHMCS.net.Models
 {
-    public class ProductsResponse : IResponse<Products>
-    {
-        [JsonProperty("result")]
-        public string Result { get; set; }
-
-        [JsonProperty("totalresults")]
-        public int TotalResults { get; set; }
-
-        [JsonProperty("products")]
-        public Products Content { get; set; }
-    }
-
-    public class Products
-    {
-        [JsonProperty("product")]
-        public List<Product> Product { get; set; }
-    }
-
     public class Product
     {
         [JsonProperty("pid")]
-        public string PID { get; set; }
+        public string Pid { get; set; }
 
         [JsonProperty("gid")]
-        public string GID { get; set; }
+        public string Gid { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

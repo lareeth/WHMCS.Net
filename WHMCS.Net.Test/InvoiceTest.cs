@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Specialized;
 using WHMCS.net.Models;
 using WHMCS.net;
+using WHMCS.net.Interfaces;
 
 namespace WHMCS.Net.Test
 {

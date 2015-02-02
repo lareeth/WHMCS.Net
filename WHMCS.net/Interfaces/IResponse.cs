@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WHMCS.net.Models
+namespace WHMCS.net.Interfaces
 {
     interface IResponse<T> where T : class
     {
