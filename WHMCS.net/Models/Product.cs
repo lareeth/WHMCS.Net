@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WHMCS.net.Models
 {
-    public class ProductsResponse
+    public class ProductsResponse : IResponse<Products>
     {
         [JsonProperty("result")]
         public string Result { get; set; }
@@ -15,7 +15,7 @@ namespace WHMCS.net.Models
         public int TotalResults { get; set; }
 
         [JsonProperty("products")]
-        public Products Products { get; set; }
+        public Products Content { get; set; }
     }
 
     public class Products

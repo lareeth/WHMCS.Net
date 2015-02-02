@@ -18,11 +18,13 @@ namespace WHMCS.net
         private readonly string _password;
         private readonly string _url;
         private readonly NameValueCollection _formData;
+        private readonly IDatastore _datastore;
 
-        public WhmcsApi(string username, string password, string domain, bool secure)
+        public WhmcsApi(string username, string password, string url, IDatastore datastore)
         {
             _username = username;
             _password = CalculateMD5Hash(password);
+            _url = url;
 
             _formData = new NameValueCollection()
             {
@@ -31,7 +33,13 @@ namespace WHMCS.net
                 {"responsetype", "json"}
             };
 
-            _url = (secure ? "https://" : "http://") + domain + "/includes/api.php";
+            _datastore = datastore;
+        }
+
+        public WhmcsApi(string username, string password, string url)
+            : this(username, password, url, new Datastore())
+        {
+
         }
 
         private string CalculateMD5Hash(string input)
@@ -58,8 +66,7 @@ namespace WHMCS.net
                 {"action", "getproducts"},
                 {"pid", productId.ToString()}
             };
-            Byte[] responseData = new WebClient().UploadValues(_url, requestData);
-            return JsonConvert.DeserializeObject<ProductsResponse>(Encoding.ASCII.GetString(responseData));
+            return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, requestData));
         }
 
         public ProductsResponse getProducts()
@@ -69,8 +76,7 @@ namespace WHMCS.net
                 _formData,
                 {"action", "getproducts"}
             };
-            Byte[] responseData = new WebClient().UploadValues(_url, requestData);
-            return JsonConvert.DeserializeObject<ProductsResponse>(Encoding.ASCII.GetString(responseData));
+            return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, requestData));
         }
 
         public ProductsResponse getProducts(int groupId)
@@ -81,8 +87,7 @@ namespace WHMCS.net
                 {"action", "getproducts"},
                 {"gid", groupId.ToString()}
             };
-            Byte[] responseData = new WebClient().UploadValues(_url, requestData);
-            return JsonConvert.DeserializeObject<ProductsResponse>(Encoding.ASCII.GetString(responseData));
+            return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, requestData));
         }
     }
 }
