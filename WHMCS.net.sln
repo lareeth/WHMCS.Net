@@ -5,6 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WHMCS.Net", "WHMCS.net\WHMC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WHMCS.Net.Tests", "WHMCS.Net.Test\WHMCS.Net.Tests.csproj", "{0767F795-9A66-4D11-A4CA-2ACE7F904A9E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{353BDE43-07A3-4148-869A-2207D850D104}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

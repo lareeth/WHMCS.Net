@@ -1,28 +1,27 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.Linq;
 using WHMCS.Net.Interfaces;
 using WHMCS.Net.Models;
+using Xunit;
 
 namespace WHMCS.Net.Test
 {
-    [TestClass]
     public class InvoiceTest : IDatastore
     {
-        [TestMethod]
+        [Fact]
         public void TestSingleInvoiceItemAmount()
         {
             WhmcsApi instance = new WhmcsApi("User", "Pass", "Website", this);
             InvoiceResponse singleInvoice = instance.GetInvoice(218);
-            Assert.AreEqual("7.50", singleInvoice.Items.Item.SingleOrDefault().Amount);
+            Assert.Equal("7.50", singleInvoice.Items.Item.SingleOrDefault().Amount);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestGetSingleInvoice()
         {
             WhmcsApi instance = new WhmcsApi("User", "Pass", "Website", this);
             InvoiceResponse singleInvoice = instance.GetInvoice(218);
-            Assert.IsNotNull(singleInvoice);
+            Assert.NotNull(singleInvoice);
         }
 
         public string GetData(string url, NameValueCollection values)

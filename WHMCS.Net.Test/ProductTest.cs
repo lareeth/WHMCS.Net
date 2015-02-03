@@ -1,44 +1,43 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.Linq;
 using WHMCS.Net.Interfaces;
 using WHMCS.Net.Models;
+using Xunit;
 
 namespace WHMCS.Net.Test
 {
-    [TestClass]
     public class ProductTest : IDatastore
     {
-        [TestMethod]
+        [Fact]
         public void TestSingleProductName()
         {
             WhmcsApi instance = new WhmcsApi("User", "Pass", "Website", this);
             ProductsResponse singleProduct = instance.GetProduct(1);
-            Assert.AreEqual("Basic cPanel Shared Hosting", singleProduct.Products.Product.SingleOrDefault().Name);
+            Assert.Equal("Basic cPanel Shared Hosting", singleProduct.Products.Product.SingleOrDefault().Name);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestGetSingleProduct()
         {
             WhmcsApi instance = new WhmcsApi("User", "Pass", "Website", this);
             ProductsResponse singleProduct = instance.GetProduct(1);
-            Assert.IsNotNull(singleProduct);
+            Assert.NotNull(singleProduct);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestGetGroupProducts()
         {
             WhmcsApi instance = new WhmcsApi("User", "Pass", "Website", this);
             ProductsResponse test = instance.GetProducts(1);
-            Assert.IsNotNull(test);
+            Assert.NotNull(test);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestGetAllProducts()
         {
             WhmcsApi instance = new WhmcsApi("User", "Pass", "Website", this);
             ProductsResponse test = instance.GetProducts();
-            Assert.IsNotNull(test);
+            Assert.NotNull(test);
         }
 
         public string GetData(string url, NameValueCollection values)
