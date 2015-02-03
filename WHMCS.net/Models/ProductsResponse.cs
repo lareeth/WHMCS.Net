@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using WHMCS.net.Interfaces;
 
-namespace WHMCS.net.Models
+namespace WHMCS.Net.Models
 {
-    public class ProductsResponse : IResponse<Products>
+    public class ProductsResponse
     {
         [JsonProperty("result")]
         public string Result { get; set; }
@@ -12,6 +11,6 @@ namespace WHMCS.net.Models
         public int TotalResults { get; set; }
 
         [JsonProperty("products")]
-        public Products Content { get; set; }
+        public Products Products { get; set; }
     }
 }

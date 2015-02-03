@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 
-namespace WHMCS.net.Interfaces
+namespace WHMCS.Net.Interfaces
 {
     public interface IDatastore
     {

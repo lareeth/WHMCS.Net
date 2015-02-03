@@ -4,10 +4,10 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using WHMCS.net.Interfaces;
-using WHMCS.net.Models;
+using WHMCS.Net.Interfaces;
+using WHMCS.Net.Models;
 
-namespace WHMCS.net
+namespace WHMCS.Net
 {
     public class WhmcsApi
     {
@@ -17,13 +17,12 @@ namespace WHMCS.net
 
         public WhmcsApi(string username, string password, string url, IDatastore datastore)
         {
-            var password1 = CalculateMD5Hash(password);
             _url = url;
 
             _formData = new NameValueCollection()
             {
                 {"username", username},
-                {"password", password1},
+                {"password", CalculateMD5Hash(password)},
                 {"responsetype", "json"}
             };
 
@@ -39,15 +38,15 @@ namespace WHMCS.net
         private string CalculateMD5Hash(string input)
         {
             // step 1, calculate MD5 hash from input
-            MD5 md5 = System.Security.Cryptography.MD5.Create();
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            MD5 md5 = MD5.Create();
+            byte[] inputBytes = Encoding.ASCII.GetBytes(input);
             byte[] hash = md5.ComputeHash(inputBytes);
 
             // step 2, convert byte array to hex string
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
+            foreach (byte t in hash)
             {
-                sb.Append(hash[i].ToString("x2"));
+                sb.Append(t.ToString("x2"));
             }
             return sb.ToString();
         }
@@ -82,6 +81,17 @@ namespace WHMCS.net
                 {"gid", groupId.ToString()}
             };
             return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, requestData));
+        }
+
+        public InvoiceResponse GetInvoice(int invoiceId)
+        {
+            NameValueCollection requestData = new NameValueCollection
+            {
+                _formData,
+                {"action", "getinvoice"},
+                {"invoiceid", invoiceId.ToString()}
+            };
+            return JsonConvert.DeserializeObject<InvoiceResponse>(_datastore.GetData(_url, requestData));
         }
     }
 }

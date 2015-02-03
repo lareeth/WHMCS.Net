@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace WHMCS.net.Models
+namespace WHMCS.Net.Models
 {
     public class Products
     {

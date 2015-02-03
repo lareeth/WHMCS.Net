@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Linq;
-using System.Web;
 
-namespace WHMCS.net.Models
+namespace WHMCS.Net.Models
 {
     public class Product
     {
