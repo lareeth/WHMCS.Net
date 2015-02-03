@@ -1,8 +1,2 @@
 language: csharp
 solution: WHMCS.net.sln
-install:
-  - nuget restore WHMCS.net.sln
-  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
-script:
-  - xbuild /p:Configuration=Release WHMCS.net.sln
-  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.exe ./WHMCS.Net.Test/bin/Release/WHMCS.Net.Test.dll
