@@ -48,7 +48,7 @@
     <Compile Include="InvoiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WHMCS.net\WHMCS.Net.csproj">
+    <ProjectReference Include="..\WHMCS.Net\WHMCS.Net.csproj">
       <Project>{846231f2-7d3f-4189-882c-165e96b2da4c}</Project>
       <Name>WHMCS.Net</Name>
     </ProjectReference>
