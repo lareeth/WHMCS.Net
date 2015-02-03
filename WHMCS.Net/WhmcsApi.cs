@@ -18,6 +18,7 @@ namespace WHMCS.Net
         public WhmcsApi(string username, string password, string url, IDatastore datastore)
         {
             _url = url;
+            _datastore = datastore;
 
             _formData = new NameValueCollection()
             {
@@ -25,12 +26,9 @@ namespace WHMCS.Net
                 {"password", CalculateMD5Hash(password)},
                 {"responsetype", "json"}
             };
-
-            _datastore = datastore;
         }
 
-        public WhmcsApi(string username, string password, string url)
-            : this(username, password, url, new Datastore())
+        public WhmcsApi(string username, string password, string url) : this(username, password, url, new Datastore())
         {
 
         }
@@ -53,45 +51,41 @@ namespace WHMCS.Net
 
         public ProductsResponse GetProduct(int productId)
         {
-            NameValueCollection requestData = new NameValueCollection
+            return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, new NameValueCollection
             {
                 _formData,
                 {"action", "getproducts"},
                 {"pid", productId.ToString()}
-            };
-            return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, requestData));
+            }));
         }
 
         public ProductsResponse GetProducts()
         {
-            NameValueCollection requestData = new NameValueCollection
+            return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, new NameValueCollection
             {
                 _formData,
                 {"action", "getproducts"}
-            };
-            return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, requestData));
+            }));
         }
 
         public ProductsResponse GetProducts(int groupId)
         {
-            NameValueCollection requestData = new NameValueCollection
+            return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, new NameValueCollection 
             {
                 _formData,
                 {"action", "getproducts"},
                 {"gid", groupId.ToString()}
-            };
-            return JsonConvert.DeserializeObject<ProductsResponse>(_datastore.GetData(_url, requestData));
+            }));
         }
 
         public InvoiceResponse GetInvoice(int invoiceId)
         {
-            NameValueCollection requestData = new NameValueCollection
+            return JsonConvert.DeserializeObject<InvoiceResponse>(_datastore.GetData(_url, new NameValueCollection
             {
                 _formData,
                 {"action", "getinvoice"},
                 {"invoiceid", invoiceId.ToString()}
-            };
-            return JsonConvert.DeserializeObject<InvoiceResponse>(_datastore.GetData(_url, requestData));
+            }));
         }
     }
 }
