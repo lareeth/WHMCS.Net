@@ -40,9 +40,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Umbraco.Core">
-      <HintPath>..\..\illumihost\packages\UmbracoCms.Core.7.2.1\lib\Umbraco.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IDatastore.cs" />
