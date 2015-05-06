@@ -15,7 +15,7 @@ namespace WHMCS.Net
         private readonly NameValueCollection _formData;
         private readonly IDatastore _datastore;
 
-        public WhmcsApi(string username, string password, string url, IDatastore datastore)
+        public WhmcsApi(string username, string password, string url, IDatastore datastore, string accessKey = null)
         {
             _url = url;
             _datastore = datastore;
@@ -26,9 +26,15 @@ namespace WHMCS.Net
                 {"password", CalculateMD5Hash(password)},
                 {"responsetype", "json"}
             };
+
+            if (!string.IsNullOrEmpty(accessKey))
+            {
+                _formData.Add("accesskey", accessKey);
+            }
         }
 
-        public WhmcsApi(string username, string password, string url) : this(username, password, url, new Datastore())
+        public WhmcsApi(string username, string password, string url, string accessKey = null)
+            : this(username, password, url, new Datastore(), accessKey)
         {
 
         }
@@ -86,6 +92,54 @@ namespace WHMCS.Net
                 {"action", "getinvoice"},
                 {"invoiceid", invoiceId.ToString()}
             }));
+        }
+
+        public OrdersResponse GetOrders(int? orderId = null, int? userId = null, OrderStatus? orderStatus = null, int? limitStart = null, int? limitNum = null)
+        {
+            NameValueCollection values = new NameValueCollection
+            {
+                _formData,
+                {"action", "getorders"}
+            };
+
+            if (orderId.HasValue)
+            {
+                values.Add("id", orderId.ToString());
+            }
+
+            if (userId.HasValue)
+            {
+                values.Add("userid", userId.ToString());
+            }
+
+            if (orderStatus.HasValue)
+            {
+                values.Add("status", orderStatus.ToString());
+            }
+
+            if (limitStart.HasValue)
+            {
+                values.Add("limitstart", limitStart.ToString());
+            }
+
+            if (limitNum.HasValue)
+            {
+                values.Add("limitnum", limitNum.ToString());
+            }
+
+            return JsonConvert.DeserializeObject<OrdersResponse>(_datastore.GetData(_url, values));
+        }
+
+        public ClientsDetailsResponse GetClientsDetails(int clientId)
+        {
+            NameValueCollection values = new NameValueCollection
+            {
+                _formData,
+                {"action", "getclientsdetails"},
+                {"clientid", clientId.ToString()}
+            };
+
+            return JsonConvert.DeserializeObject<ClientsDetailsResponse>(_datastore.GetData(_url, values));
         }
     }
 }
