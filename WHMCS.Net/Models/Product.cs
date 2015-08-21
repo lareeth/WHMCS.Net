@@ -24,5 +24,20 @@ namespace WHMCS.Net.Models
 
         [JsonProperty("paytype")]
         public string PayType { get; set; }
+
+        [JsonProperty("pricing")]
+        public Pricing Pricing { get; set; }
+
+        [JsonProperty("customfields")]
+        public CustomFields CustomFields { get; set; }
+
+        [JsonProperty("configoptions")]
+        public ConfigOptions ConfigOptions { get; set; }
+
+        [JsonProperty("stockcontrol")]
+        public string StockControl { get; set; }
+
+        [JsonProperty("stocklevel")]
+        public string StockLevel { get; set; }
     }
 }
