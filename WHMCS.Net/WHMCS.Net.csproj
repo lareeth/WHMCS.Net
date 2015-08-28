@@ -58,7 +58,6 @@
     <Compile Include="Datastore.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Models\ProductsResponse.cs" />
-    <Compile Include="Models\Stats.cs" />
     <Compile Include="Models\StatsResponse.cs" />
     <Compile Include="Models\Transactions.cs" />
     <Compile Include="Models\Transation.cs" />
