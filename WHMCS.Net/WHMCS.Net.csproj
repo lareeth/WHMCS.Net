@@ -52,7 +52,12 @@
     <Compile Include="Models\InvoiceResponse.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Items.cs" />
+    <Compile Include="Models\Lineitem.cs" />
+    <Compile Include="Models\Lineitems.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\OrdersResponse.cs" />
+    <Compile Include="Models\Enums\OrderStatus.cs" />
     <Compile Include="Models\Pricing.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Datastore.cs" />

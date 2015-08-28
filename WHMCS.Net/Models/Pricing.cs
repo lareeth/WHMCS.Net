@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace WHMCS.Net.Models
 {
     public class Pricing
     {
+        [JsonProperty("GBP")]
         public GBP GBP { get; set; }
     }
 }

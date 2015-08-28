@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using WHMCS.Net.Interfaces;
 using WHMCS.Net.Models;
+using WHMCS.Net.Models.Enums;
 
 namespace WHMCS.Net
 {
