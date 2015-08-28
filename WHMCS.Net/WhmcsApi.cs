@@ -141,5 +141,16 @@ namespace WHMCS.Net
 
             return JsonConvert.DeserializeObject<ClientsDetailsResponse>(_datastore.GetData(_url, values));
         }
+
+        public StatsResponse GetStats()
+        {
+            NameValueCollection values = new NameValueCollection
+            {
+                _formData,
+                {"action", "getstats"}
+            };
+
+            return JsonConvert.DeserializeObject<StatsResponse>(_datastore.GetData(_url, values));
+        }
     }
 }
