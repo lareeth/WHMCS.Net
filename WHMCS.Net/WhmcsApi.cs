@@ -14,7 +14,7 @@ namespace WHMCS.Net
         private readonly NameValueCollection _formData;
         private readonly IDatastore _datastore;
 
-        public WhmcsApi(string username, string password, string url, IDatastore datastore, string accessKey = null)
+        public WhmcsApi(string username, string password, string url, IDatastore datastore)
         {
             _url = url;
             _datastore = datastore;
@@ -22,36 +22,27 @@ namespace WHMCS.Net
             _formData = new NameValueCollection()
             {
                 {"username", username},
-                {"password", CalculateMD5Hash(password)},
+                {"password", Security.CalculateMD5Hash(password)},
                 {"responsetype", "json"}
             };
-
-            if (!string.IsNullOrEmpty(accessKey))
-            {
-                _formData.Add("accesskey", accessKey);
-            }
         }
 
-        public WhmcsApi(string username, string password, string url, string accessKey = null)
-            : this(username, password, url, new Datastore(), accessKey)
+        public WhmcsApi(string username, string password, string url)
+            : this(username, password, url, new Datastore())
         {
 
         }
 
-        private string CalculateMD5Hash(string input)
+        public WhmcsApi(string username, string password, string accessKey, string url, IDatastore datastore)
+            : this(username, password, url, new Datastore())
         {
-            // step 1, calculate MD5 hash from input
-            MD5 md5 = MD5.Create();
-            byte[] inputBytes = Encoding.ASCII.GetBytes(input);
-            byte[] hash = md5.ComputeHash(inputBytes);
+            _formData.Add("accesskey", accessKey);
+        }
 
-            // step 2, convert byte array to hex string
-            StringBuilder sb = new StringBuilder();
-            foreach (byte t in hash)
-            {
-                sb.Append(t.ToString("x2"));
-            }
-            return sb.ToString();
+        public WhmcsApi(string username, string password, string accessKey, string url)
+            : this(username, password, accessKey, url, new Datastore())
+        {
+
         }
 
         public ProductsResponse GetProduct(int productId)
