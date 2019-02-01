@@ -4,4 +4,5 @@ dist: xenial
 dotnet: 2.2.103
 
 script:
-  - dotnet test
+  - dotnet build -r linux-x64
+  - dotnet test --no-build
