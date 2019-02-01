@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using Moq;
 using WHMCS.Net.Interfaces;
 using WHMCS.Net.Models;
@@ -14,8 +10,8 @@ namespace WHMCS.Net.Test
 {
     public class OrderTest
     {
-        private readonly string _jsonData = "{}";
-        private readonly Expression<Func<IDatastore, string>> _invoiceExpectation = datastore => datastore.GetData("Website", It.IsNotNull<NameValueCollection>());
+        readonly string _jsonData = "{}";
+        readonly Expression<Func<IDatastore, string>> _invoiceExpectation = datastore => datastore.GetData("Website", It.IsNotNull<NameValueCollection>());
 
         [Fact]
         public void TestGetSingleInvoice()

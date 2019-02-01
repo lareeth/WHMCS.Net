@@ -1,13 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WHMCS.Net", "WHMCS.Net\WHMCS.Net.csproj", "{846231F2-7D3F-4189-882C-165E96B2DA4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WHMCS.Net", "WHMCS.Net\WHMCS.Net.csproj", "{846231F2-7D3F-4189-882C-165E96B2DA4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WHMCS.Net.Tests", "WHMCS.Net.Test\WHMCS.Net.Tests.csproj", "{0767F795-9A66-4D11-A4CA-2ACE7F904A9E}"
 EndProject
-
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {06C5C9E6-A777-4C62-ACDA-168D86D9040D}
 	EndGlobalSection
 EndGlobal

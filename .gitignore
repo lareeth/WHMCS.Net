@@ -18,4 +18,5 @@ build/*.nupkg
 *.orig
 *.[Dd]ot[Ss]ettings
 /packages/*
+/.vs/*
 !packages/repositories.config
