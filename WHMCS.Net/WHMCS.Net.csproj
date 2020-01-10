@@ -1,85 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{846231F2-7D3F-4189-882C-165E96B2DA4C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WHMCS.Net</RootNamespace>
-    <AssemblyName>WHMCS.Net</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Interfaces\IDatastore.cs" />
-    <Compile Include="Interfaces\IResponse.cs" />
-    <Compile Include="Models\ClientsDetailsResponse.cs" />
-    <Compile Include="Models\ConfigOptions.cs" />
-    <Compile Include="Models\CustomFields.cs" />
-    <Compile Include="Models\GBP.cs" />
-    <Compile Include="Models\InvoiceResponse.cs" />
-    <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\Items.cs" />
-    <Compile Include="Models\Lineitem.cs" />
-    <Compile Include="Models\Lineitems.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\Orders.cs" />
-    <Compile Include="Models\OrdersResponse.cs" />
-    <Compile Include="Models\Enums\OrderStatus.cs" />
-    <Compile Include="Models\Pricing.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Datastore.cs" />
-    <Compile Include="Models\Products.cs" />
-    <Compile Include="Models\ProductsResponse.cs" />
-    <Compile Include="Models\StatsResponse.cs" />
-    <Compile Include="Models\Transactions.cs" />
-    <Compile Include="Models\Transation.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security.cs" />
-    <Compile Include="WhmcsApi.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.1</TargetFrameworks>
+        <PackageProjectUrl>https://github.com/lareeth/WHMCS.net</PackageProjectUrl>
+        <PackageTags>WHMCS</PackageTags>
+        <Authors>Gareth Luckett</Authors>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+	
 </Project>

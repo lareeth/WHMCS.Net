@@ -1,15 +1,11 @@
 language: csharp
-
-solution: WHMCS.net.sln
+mono: none
+dist: xenial
+dotnet: 3.1.100
 
 branches:
   only: 
     - master
 
-install:
-  - nuget restore WHMCS.net.sln
-  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
-
 script:
-  - xbuild /p:Configuration=Release WHMCS.net.sln
-  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./WHMCS.Net.Test/bin/Release/WHMCS.Net.Test.dll
+  - dotnet test
