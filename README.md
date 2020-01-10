@@ -3,8 +3,8 @@ A .net library allowing you to connect to a WHMCS installation and query the API
 
 | Environment | Status |
 | ------------- |:-------------:|
-| Master        | [![Build Status](https://travis-ci.org/lareeth/WHMCS.Net.svg?branch=master)](https://travis-ci.org/lareeth/WHMCS.Net) |
-| Dev           | [![Build Status](https://travis-ci.org/lareeth/WHMCS.Net.svg?branch=dev)](https://travis-ci.org/lareeth/WHMCS.Net) |
+| Master        | [![Build Status](https://travis-ci.com/lareeth/WHMCS.Net.svg?branch=master)](https://travis-ci.com/lareeth/WHMCS.Net) |
+| Dev           | [![Build Status](https://travis-ci.com/lareeth/WHMCS.Net.svg?branch=dev)](https://travis-ci.com/lareeth/WHMCS.Net) |
 
 To get started create a new instance of WhmcsApi, then pass in the login details and domain. You can additionally pass in an access key if you have it set up
 
